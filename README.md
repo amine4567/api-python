@@ -53,20 +53,18 @@ To use any endpoint function in the API, you must first be authorized by RetroAc
 ```python
 from retroachievements import RAClient
 
-userName = '<your username on RA>'
-webApiKey = '<your web API key>'
+user_name = '<your username on RA>'
+web_api_key = '<your web API key>'
 
-auth = RAClient(userName, webApiKey)
+client = RAClient(userName, webApiKey)
 ```
 
 4. You now have all you need to use any function in the API. Each function takes this authorization object as its first argument. Here's an example:
 
 ```python
-from retroachievements import getGame
-
 // This returns basic metadata about the game on this page:
 // https://retroachievements.org/game/14402
-game = auth.getGame(14402);
+game = client.get_game(14402);
 ```
 
 ## Contributing
