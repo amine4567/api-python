@@ -56,7 +56,7 @@ from retroachievements import RAClient
 user_name = '<your username on RA>'
 web_api_key = '<your web API key>'
 
-client = RAClient(userName, webApiKey)
+client = RAClient(user_name, web_api_key)
 ```
 
 4. You now have all you need to use any function in the API. Each function takes this authorization object as its first argument. Here's an example:
