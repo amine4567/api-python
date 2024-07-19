@@ -10,8 +10,7 @@ class RAClient:
     Main class for accessing the RetroAhievements Web API
     """
 
-    headers = {
-        "User-Agent": "RetroAchievements-api-python/" + __version__}
+    headers = {"User-Agent": "RetroAchievements-api-python/" + __version__}
 
     def __init__(self, username, api_key):
         self.username = username
@@ -50,9 +49,7 @@ class RAClient:
         result = self._call_api("API_GetUserPoints.php?", {"u": user}).json()
         return result
 
-    def get_user_summary(self, user: str,
-                         recent_games=0,
-                         recent_cheevos=10) -> dict:
+    def get_user_summary(self, user: str, recent_games=0, recent_cheevos=10) -> dict:
         """
         Get a user's exhaustive profile metadata
 
@@ -96,8 +93,7 @@ class RAClient:
         Params:
             i: The game ID to query
         """
-        result = self._call_api(
-            "API_GetAchievementCount.php?", {"i": game}).json()
+        result = self._call_api("API_GetAchievementCount.php?", {"i": game}).json()
         return result
 
     def get_achievement_distribution(self, game: int) -> dict:
@@ -134,7 +130,6 @@ class RAClient:
             h: If 1, also return the supported hashes for games (default = 0)
         """
         result = self._call_api(
-            "API_GetGameList.php?", {
-                "i": system, "f": has_cheevos, "h": hashes}
+            "API_GetGameList.php?", {"i": system, "f": has_cheevos, "h": hashes}
         ).json()
         return result
