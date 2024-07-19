@@ -7,16 +7,16 @@ _BASE_URL = "https://retroachievements.org/API/"
 
 class RAClient:
     """
-    Main class for accessing the RetroAhievements Web API
+    Main class for accessing the RetroAchievements Web API
     """
 
     headers = {"User-Agent": "RetroAchievements-api-python/" + __version__}
 
-    def __init__(self, username, api_key):
+    def __init__(self, username: str, api_key: str):
         self.username = username
         self.api_key = api_key
 
-    def url_params(self, params=None):
+    def url_params(self, params: dict | None = None):
         """
         Inserts the auth and query params into the request
         """
@@ -26,7 +26,13 @@ class RAClient:
         return params
 
     # URL construction
-    def _call_api(self, endpoint=None, params=None, timeout=30, headers=None):
+    def _call_api(
+        self,
+        endpoint: dict | None = None,
+        params: dict | None = None,
+        timeout: int = 30,
+        headers: dict | None = None,
+    ):
         if endpoint is None:
             endpoint = {}
         req = request.get(
@@ -49,7 +55,9 @@ class RAClient:
         result = self._call_api("API_GetUserPoints.php?", {"u": user}).json()
         return result
 
-    def get_user_summary(self, user: str, recent_games=0, recent_cheevos=10) -> dict:
+    def get_user_summary(
+        self, user: str, recent_games: int = 0, recent_cheevos: int = 10
+    ) -> dict:
         """
         Get a user's exhaustive profile metadata
 
@@ -120,7 +128,7 @@ class RAClient:
         result = self._call_api("API_GetConsoleIDs.php?", {}).json()
         return result
 
-    def get_game_list(self, system: int, has_cheevos=0, hashes=0) -> dict:
+    def get_game_list(self, system: int, has_cheevos: int = 0, hashes: int = 0) -> dict:
         """
         Get the complete list of games for a console
 
