@@ -1,5 +1,7 @@
+from typing import Type
 import requests as request
 from retroachievements import __version__
+from retroachievements.models import RAAPIResponse
 
 _BASE_URL = "https://retroachievements.org/API/"
 
@@ -27,17 +29,15 @@ class BaseRAClient:
     # URL construction
     def _call_api(
         self,
-        endpoint: dict | None = None,
+        endpoint: str,
         params: dict | None = None,
         timeout: int = 30,
         headers: dict | None = None,
-    ):
-        if endpoint is None:
-            endpoint = {}
+    ) -> dict | list[dict]:
         req = request.get(
             f"{_BASE_URL}{endpoint}",
             params=self.url_params(params),
             timeout=timeout,
             headers=headers,
         )
-        return req
+        return req.json()

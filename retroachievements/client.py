@@ -10,14 +10,18 @@ from retroachievements.endpoints.achievement_distribution import (
 )
 from retroachievements.endpoints.console_ids import get_console_ids
 from retroachievements.endpoints.game_list import get_game_list
+from retroachievements.endpoints.user.unlocks import get_user_recent_achievements
+from retroachievements.endpoints.user.unlocks import get_achievements_earned_between
 
 
 class RAClient(BaseRAClient):
+    # User endpoints
     get_user_points = get_user_points
     get_user_summary = get_user_summary
+    get_recent_unlocks = get_user_recent_achievements
+    get_achievements_earned_between = get_achievements_earned_between
 
     # Game endpoints
-
     get_game = get_game
     get_game_extended = get_game_extended
 

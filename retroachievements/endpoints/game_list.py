@@ -14,5 +14,5 @@ def get_game_list(
     """
     result = self._call_api(
         "API_GetGameList.php?", {"i": system, "f": has_cheevos, "h": hashes}
-    ).json()
+    )
     return result
